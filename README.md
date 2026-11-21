@@ -92,3 +92,4 @@ Installers will be generated in the `dist/` directory:
 ## License
 
 Commercial Proprietary - Garage Management System. All rights reserved.
+"# management-system" 

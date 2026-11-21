@@ -1,0 +1,73 @@
+{
+  "name": "garage",
+  "version": "2.0.0",
+  "description": "Professional Automotive Workshop & Garage Management System",
+  "main": "index.js",
+  "author": "Workshop Systems",
+  "license": "ISC",
+  "scripts": {
+    "start": "electron \".\"",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:win:portable": "electron-builder --win portable",
+    "dist:win:nsis": "electron-builder --win nsis",
+    "dist:linux": "electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "^44.9.1",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "sql.js": "^1.15.1"
+  },
+  "build": {
+    "appId": "com.workshop.management",
+    "productName": "Garage Management System",
+    "npmRebuild": false,
+    "asar": true,
+    "asarUnpack": [
+      "**/node_modules/better-sqlite3/**",
+      "**/node_modules/sql.js/**"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!.env*",
+      "!*.enc*",
+      "!*.sqlite*",
+      "!*.db*",
+      "!*.log",
+      "!*.tmp",
+      "!debug-*",
+      "!tests/**",
+      "!scripts/**"
+    ],
+    "win": {
+      "icon": "garage.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Garage Management System",
+      "deleteAppDataOnUninstall": false
+    },
+    "linux": {
+      "icon": "garage.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Office"
+    }
+  }
+}
